@@ -11,26 +11,23 @@ import {
 } from '@/components';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { TOKEN } from './constants';
+import { PlantDetailPage } from './components/Plant';
 
 function App() {
-  const token = localStorage.getItem(TOKEN) as string;
-
   return (
     <Router>
       <Routes>
-        <Route element={<NavbarWrapper token={token} />}>
+        <Route element={<NavbarWrapper />}>
           {/* Public routes */}
           <Route path="/signin" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home token={token} />} />
+          <Route path="/" element={<Home />} />
 
           {/* Protected routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/plants" element={<PlantsList />} />
             <Route path="/plants/create" element={<CreatePlant />} />
             <Route path="/plants/edit/:id" element={<EditPlant />} />
-            {/* TODO Add protected routes here */}
           </Route>
         </Route>
 

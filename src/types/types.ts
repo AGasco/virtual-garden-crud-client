@@ -16,7 +16,6 @@ export type AuthResponse = {
 export type PlantForm = {
   name: string;
   species: string;
-
   imageUrl: string;
 };
 
