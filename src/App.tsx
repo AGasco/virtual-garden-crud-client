@@ -5,13 +5,13 @@ import {
   Login,
   NavbarWrapper,
   NotFound,
+  PlantDetailPage,
   PlantsList,
   ProtectedRoute,
   Register
 } from '@/components';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { PlantDetailPage } from './components/Plant';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
             <Route path="/plants" element={<PlantsList />} />
             <Route path="/plants/create" element={<CreatePlant />} />
             <Route path="/plants/edit/:id" element={<EditPlant />} />
+            <Route path="/plants/:id" element={<PlantDetailPage />} />
           </Route>
         </Route>
 
