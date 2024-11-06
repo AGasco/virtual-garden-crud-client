@@ -1,12 +1,12 @@
 import { axiosInstance } from '@/api';
-import { Plant } from '@/types/types';
+import { Plant, PlantForm } from '@/types';
 
 export const getPlants = async () => {
   const response = await axiosInstance.get<Plant[]>('/plants');
   return response.data;
 };
 
-export const createPlant = async (plantData: Plant) => {
+export const createPlant = async (plantData: PlantForm) => {
   const response = await axiosInstance.post<Plant>('/plants', plantData);
   return response.data;
 };
