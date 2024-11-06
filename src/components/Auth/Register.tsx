@@ -3,6 +3,7 @@ import { TOKEN } from '@/constants';
 import { registerUser } from '@/services';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './Register.scss';
 
 const initialState = {
   username: '',
@@ -35,8 +36,7 @@ const Register = () => {
   const { username, email, password } = formData;
 
   return (
-    <>
-      {' '}
+    <div className="register">
       <form onSubmit={handleSubmit}>
         <input
           name="username"
@@ -65,7 +65,7 @@ const Register = () => {
       <p>
         Already have an account? <Link to="/login">Login</Link>
       </p>
-    </>
+    </div>
   );
 };
 

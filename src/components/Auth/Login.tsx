@@ -3,6 +3,7 @@ import { loginUser } from '@/services';
 import { ApiError } from '@/api';
 import { TOKEN } from '@/constants';
 import { Link, useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 const initialState = {
   email: '',
@@ -34,7 +35,7 @@ const Login = () => {
   const { email, password } = credentials;
 
   return (
-    <>
+    <div className="login">
       <form onSubmit={handleSubmit}>
         <input
           name="email"
@@ -58,7 +59,7 @@ const Login = () => {
       <p>
         Don't have an account? <Link to="/signin">Register</Link>
       </p>
-    </>
+    </div>
   );
 };
 
