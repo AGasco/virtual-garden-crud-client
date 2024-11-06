@@ -5,24 +5,46 @@
   padding: 1rem 4rem;
   background-color: transparent;
 
-  &__content {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__link {
-    color: black;
-    transition: opacity 0.3s ease;
-
-    &:hover {
-      opacity: 0.7;
-    }
-
-    &.--home {
-      color: white;
+  &--home {
+    .navbar__link {
+      color: black;
+      transition: opacity 0.3s ease;
 
       &:hover {
         opacity: 0.7;
+      }
+
+      &.--home {
+        color: white;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  &--other {
+    .navbar__link {
+      color: white;
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background: none;
+      border: none;
+
+      &:focus {
+        outline: none;
       }
     }
   }
