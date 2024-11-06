@@ -3,6 +3,7 @@ import {
   EditPlant,
   Home,
   Login,
+  NavbarWrapper,
   NotFound,
   PlantsList,
   ProtectedRoute,
@@ -18,17 +19,19 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Public routes */}
-        <Route path="/signin" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home token={token} />} />
+        <Route element={<NavbarWrapper token={token} />}>
+          {/* Public routes */}
+          <Route path="/signin" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home token={token} />} />
 
-        {/* Protected routes */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/plants" element={<PlantsList />} />
-          <Route path="/plants/create" element={<CreatePlant />} />
-          <Route path="/plants/edit/:id" element={<EditPlant />} />
-          {/* TODO Add protected routes here */}
+          {/* Protected routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/plants" element={<PlantsList />} />
+            <Route path="/plants/create" element={<CreatePlant />} />
+            <Route path="/plants/edit/:id" element={<EditPlant />} />
+            {/* TODO Add protected routes here */}
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFound />} />
