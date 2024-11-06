@@ -11,6 +11,7 @@ export default defineConfig({
       '@/assets': resolve('src/assets'),
       '@/components': resolve('src/components'),
       '@/constants': resolve('src/constants'),
+      '@/contexts': resolve('src/contexts'),
       '@/data': resolve('src/data'),
       '@/types': resolve('src/types'),
       '@/hooks': resolve('src/hooks'),
