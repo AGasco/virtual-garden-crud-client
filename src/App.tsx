@@ -10,15 +10,18 @@ import {
 } from '@/components';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import { TOKEN } from './constants';
 
 function App() {
+  const token = localStorage.getItem(TOKEN) as string;
+
   return (
     <Router>
       <Routes>
         {/* Public routes */}
         <Route path="/signin" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home token={token} />} />
 
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>

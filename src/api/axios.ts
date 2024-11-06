@@ -1,3 +1,4 @@
+import { TOKEN } from '@/constants';
 import axios, { AxiosError } from 'axios';
 
 export interface ApiError {
@@ -14,7 +15,7 @@ export const axiosInstance = axios.create({
 // Interceptor to include JWT token in headers
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem(TOKEN);
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
