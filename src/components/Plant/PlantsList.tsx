@@ -3,6 +3,7 @@ import { deletePlant, getPlants } from '@/services/plantService';
 import { Plant } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import './PlantsList.scss';
 
 const PlantsList = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
@@ -35,7 +36,7 @@ const PlantsList = () => {
   }
 
   return (
-    <div>
+    <div className="plantsList">
       <h1>Your Plants</h1>
       <Link to="/plants/create">Add New Plant</Link>
       <ul>
