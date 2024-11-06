@@ -25,6 +25,7 @@ const PlantDetailPage = () => {
   const handleDelete = async () => {
     try {
       await deletePlantService(id!);
+      // TODO Instead of removing plant in the frontend, maybe it's better if we refetch
       deletePlant(id!);
       navigate('/plants');
     } catch (err) {
@@ -36,13 +37,18 @@ const PlantDetailPage = () => {
     return error ? <div>{error}</div> : <DotLoader />;
   }
 
+  const position =
+    plant.status === 'vault'
+      ? 'Not planted yet'
+      : `[${plant.positionX}, ${plant.positionY}]`;
+
   return (
     <div>
       <h1>{plant.name}</h1>
       <img src={plant.imageUrl} alt={plant.name} />
       <p>Species: {plant.species}</p>
       <p>Status: {plant.status}</p>
-      <p>Position: {`[${plant.positionX}, ${plant.positionY}]`}</p>
+      <p>Position: {position}</p>
       <button onClick={() => navigate(-1)}>Go Back</button>
       <button onClick={() => navigate(`/plants/edit/${plant._id}`)}>
         Edit Plant

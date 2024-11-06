@@ -25,6 +25,7 @@ const PlantsList = () => {
   const handleDelete = async (id: string) => {
     try {
       await deletePlant(id);
+      // TODO Instead of removing plant in the frontend, maybe it's better if we refetch
       setPlants(plants.filter((plant) => plant._id !== id));
     } catch (err) {
       setError((err as ApiError).message || 'Failed to delete plant');
@@ -42,7 +43,9 @@ const PlantsList = () => {
       <ul>
         {plants.map((plant) => (
           <li key={plant._id}>
-            {plant.name} ({plant.species})
+            <Link to={`/plants/${plant._id}`}>
+              {plant.name} ({plant.species})
+            </Link>
             <Link to={`/plants/edit/${plant._id}`}>Edit</Link>
             <button onClick={() => handleDelete(plant._id)}>Delete</button>
           </li>

@@ -46,6 +46,7 @@ const EditPlant = () => {
 
     try {
       const updatedPlant = await updatePlantService(id!, plantData);
+      // TODO Instead of updating plant in the frontend, maybe it's better if we refetch
       updatePlant(updatedPlant);
       navigate('/plants');
     } catch (err) {

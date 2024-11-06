@@ -35,6 +35,7 @@ const CreatePlant = () => {
     try {
       const newPlant = await createPlant(plantData);
       if (newPlant) {
+        // TODO Instead of adding plant in the frontend, maybe it's better if we refetch
         addPlant(newPlant);
         navigate('/plants');
       }
