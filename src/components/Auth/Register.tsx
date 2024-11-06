@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { registerUser } from '../services/authService';
+import { registerUser } from '@/services';
 import { ApiError } from '@/api';
 
 const initialState = {

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { loginUser } from '../services/authService';
+import { loginUser } from '@/services';
 
 const initialState = {
   email: '',
