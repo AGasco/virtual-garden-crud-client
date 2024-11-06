@@ -6,12 +6,17 @@ export const getPlants = async () => {
   return response.data;
 };
 
+export const getPlant = async (plantId: string) => {
+  const response = await axiosInstance.get<Plant>(`/plants/${plantId}`);
+  return response.data;
+};
+
 export const createPlant = async (plantData: PlantForm) => {
   const response = await axiosInstance.post<Plant>('/plants', plantData);
   return response.data;
 };
 
-export const updatePlant = async (plantId: string, updatedData: Plant) => {
+export const updatePlant = async (plantId: string, updatedData: PlantForm) => {
   const response = await axiosInstance.put<Plant>(
     `/plants/${plantId}`,
     updatedData
