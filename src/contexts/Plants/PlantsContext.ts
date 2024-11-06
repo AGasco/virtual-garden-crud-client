@@ -7,6 +7,7 @@ type PlantsContextType = {
   addPlant: (plant: Plant) => void;
   updatePlant: (updatedPlant: Plant) => void;
   deletePlant: (plantId: string) => void;
+  fetchPlants: () => Promise<void>;
 };
 
 export const PlantsContext = createContext<PlantsContextType>({
@@ -14,5 +15,6 @@ export const PlantsContext = createContext<PlantsContextType>({
   setPlants: () => {},
   addPlant: () => {},
   updatePlant: () => {},
-  deletePlant: () => {}
+  deletePlant: () => {},
+  fetchPlants: async () => {}
 });

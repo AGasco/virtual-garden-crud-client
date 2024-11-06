@@ -1,6 +1,6 @@
 import { getPlants } from '@/services';
 import { Plant } from '@/types';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { PlantsContext } from './PlantsContext';
 
 type Props = {
@@ -10,18 +10,18 @@ type Props = {
 export const PlantsProvider = ({ children }: Props) => {
   const [plants, setPlantsState] = useState<Plant[]>([]);
 
-  useEffect(() => {
-    const fetchPlants = async () => {
-      try {
-        const data = await getPlants();
-        setPlantsState(data);
-      } catch (err) {
-        console.error('Failed to fetch plants:', err);
-      }
-    };
-
-    fetchPlants();
+  const fetchPlants = useCallback(async () => {
+    try {
+      const data = await getPlants();
+      setPlantsState(data);
+    } catch (err) {
+      console.error('Failed to fetch plants:', err);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchPlants();
+  }, [fetchPlants]);
 
   const setPlants = (plants: Plant[]) => {
     setPlantsState(plants);
@@ -45,7 +45,14 @@ export const PlantsProvider = ({ children }: Props) => {
 
   return (
     <PlantsContext.Provider
-      value={{ plants, setPlants, addPlant, updatePlant, deletePlant }}
+      value={{
+        plants,
+        setPlants,
+        addPlant,
+        updatePlant,
+        deletePlant,
+        fetchPlants
+      }}
     >
       {children}
     </PlantsContext.Provider>
