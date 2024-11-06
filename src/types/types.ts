@@ -9,6 +9,10 @@ export type AuthLogin = {
   password: string;
 };
 
+export type AuthResponse = {
+  token: string;
+};
+
 export type PlantForm = {
   name: string;
   species: string;

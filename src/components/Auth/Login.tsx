@@ -1,17 +1,18 @@
 import { ApiError } from '@/api';
 import { useToken } from '@/hooks';
 import { loginUser } from '@/services';
+import { AuthLogin } from '@/types';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 
-const initialState = {
+const initialState: AuthLogin = {
   email: '',
   password: ''
 };
 
 const Login = () => {
-  const [credentials, setCredentials] = useState(initialState);
+  const [credentials, setCredentials] = useState<AuthLogin>(initialState);
   const [error, setError] = useState('');
   const { setToken } = useToken();
   const navigate = useNavigate();

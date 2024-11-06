@@ -1,8 +1,8 @@
-import { AuthLogin, AuthRegister } from '@/types';
+import { AuthLogin, AuthRegister, AuthResponse } from '@/types';
 import { axiosInstance } from '../api/axios';
 
 export const registerUser = async (userData: AuthRegister) => {
-  const response = await axiosInstance.post<AuthRegister>(
+  const response = await axiosInstance.post<AuthResponse>(
     '/auth/register',
     userData
   );
@@ -10,7 +10,7 @@ export const registerUser = async (userData: AuthRegister) => {
 };
 
 export const loginUser = async (credentials: AuthLogin) => {
-  const response = await axiosInstance.post<AuthLogin>(
+  const response = await axiosInstance.post<AuthResponse>(
     '/auth/login',
     credentials
   );
