@@ -1,7 +1,8 @@
+import { TOKEN } from '@/constants';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 const ProtectedRoute = () => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem(TOKEN);
   const location = useLocation();
 
   return token ? (
