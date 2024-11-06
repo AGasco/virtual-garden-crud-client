@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { loginUser } from '@/services';
 import { ApiError } from '@/api';
-import { TOKEN } from '@/constants';
+import { useToken } from '@/hooks';
+import { loginUser } from '@/services';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.scss';
 
@@ -13,6 +13,7 @@ const initialState = {
 const Login = () => {
   const [credentials, setCredentials] = useState(initialState);
   const [error, setError] = useState('');
+  const { setToken } = useToken();
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -25,8 +26,10 @@ const Login = () => {
 
     try {
       const data = await loginUser(credentials);
-      localStorage.setItem(TOKEN, data.token);
-      navigate('/plants');
+      if (data.token) {
+        setToken(data.token);
+        navigate('/plants');
+      }
     } catch (err) {
       setError((err as ApiError).message || 'Login failed');
     }

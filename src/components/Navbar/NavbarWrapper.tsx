@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 
-const NavbarWrapper = ({ token }: { token: string }) => {
+const NavbarWrapper = () => {
   return (
     <>
-      <Navbar token={token} />
+      <Navbar />
       <Outlet />
     </>
   );

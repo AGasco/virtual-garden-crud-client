@@ -1,8 +1,10 @@
+import { useToken } from '@/hooks';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.scss';
 
-const Home = ({ token }: { token: string }) => {
+const Home = () => {
+  const { token } = useToken();
   const navigate = useNavigate();
 
   useEffect(() => {

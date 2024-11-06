@@ -1,5 +1,5 @@
 import { ApiError } from '@/api';
-import { TOKEN } from '@/constants';
+import { useToken } from '@/hooks';
 import { registerUser } from '@/services';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ const initialState = {
 const Register = () => {
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState('');
+  const { setToken } = useToken();
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +27,10 @@ const Register = () => {
 
     try {
       const data = await registerUser(formData);
-      localStorage.setItem(TOKEN, data.token);
-      navigate('/plants');
+      if (data.token) {
+        setToken(data.token);
+        navigate('/plants');
+      }
     } catch (err) {
       setError((err as ApiError).message || 'Registration failed');
     }
