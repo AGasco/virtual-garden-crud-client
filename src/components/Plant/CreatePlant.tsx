@@ -47,7 +47,7 @@ const CreatePlant = () => {
   return (
     <div>
       <h1>Create A Plant</h1>
-      {error && <p style={{ color: 'red' }}> </p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {plants.length >= MAX_PLANTS ? (
         <p>You have reached the maximum number of plants</p>
       ) : (

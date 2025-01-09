@@ -5,6 +5,8 @@ const ProtectedRoute = () => {
   const { token } = useToken();
   const location = useLocation();
 
+  console.log('token in protected route', token);
+
   return token ? (
     <Outlet />
   ) : (
